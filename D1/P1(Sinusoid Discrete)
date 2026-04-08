@@ -1,0 +1,26 @@
+    clc;
+    clear;
+    close all;
+    
+    L=input('Enter Length L:');
+    A=input('Enter Amplitude A :');
+    wO=input('Enter angular frequency');
+    phi=input('Enter phase');
+    %T=input('Enter TIME PERIOD:');
+    
+   %Sampling frequency 
+   FS=20000;
+   
+   %DISCERETE IME INDEX
+   n=0:L-1;
+   %t=0:1/FS:T
+   
+   %SIN SEQUENCE
+    x=A*cos(wO*n);
+    
+    stem(n,x,'filled');
+    %plot(t,x,'LineWidth',1.5);
+    xlabel('n');
+    ylabel('x[n]');
+    title('Discrete-Time Sinusoidal');
+    grid on;
