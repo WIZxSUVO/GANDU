@@ -1,0 +1,38 @@
+clc;
+clear;
+close all;
+
+A = 1;
+M = 10;
+
+x = A*ones(1,M);      % Input sequence
+
+N_values = [10 100 256];
+
+for i = 1:length(N_values)
+    N = N_values(i);
+
+    % N-point DFT
+    X = fft(x, N);
+
+    k = 0:N-1;
+    w = 2*pi*k/N;
+
+    figure;
+
+    % -------- Magnitude Spectrum --------
+    subplot(2,1,1);
+    stem(w/pi, abs(X), 'filled');
+    xlabel('\omega / \pi');
+    ylabel('|X[k]|');
+    title(['Magnitude Spectrum (N = ', num2str(N), ')']);
+    grid on;
+
+    % -------- Phase Spectrum --------
+    subplot(2,1,2);
+    stem(w/pi, angle(X), 'filled');
+    xlabel('\omega / \pi');
+    ylabel('\angle X[k]');
+    title(['Phase Spectrum (N = ', num2str(N), ')']);
+    grid on;
+end
